@@ -15,12 +15,13 @@ function PostDetails() {
                 if (response.ok) {
                     const json = await response.json();
                     setPost(json);
-                    setLoading(false);
                 } else {
                     throw response;
                 }
             } catch (e) {
                 console.error("An error occurred:", e);
+            } finally {
+                setLoading(false);
             }
         };
         fetchCurrentPost();
